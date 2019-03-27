@@ -4,6 +4,7 @@
 # https://pp.userapi.com/c853420/v853420175/bd2f/aZyi66Qlivk.jpg
 
 from itertools import islice
+import numpy
 
 # ab ac ad ba bc bd da db dc ea eb ec ed
 #graph = [[0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0],  # ab
@@ -22,7 +23,7 @@ from itertools import islice
 
 graph = [[]]
 #with open('/home/cuprumtan/prog/greedy/test.txt', 'r') as f:
-with open('~/GraphColoring/src/python/test.txt', 'r') as f:
+with open('/home/cuprumtan/''Рабочий стол''/git/GraphColoring/src/python/test.txt', 'r') as f:
 
     for line in islice(f, 2):
         graph = [[int(num) for num in line.split(' ')] for line in f]
@@ -59,6 +60,12 @@ def greedyColoring():
 
 result = greedyColoring()
 
+print('\n')
+print('Source matrix:')
+print(numpy.matrix(graph))
+print('\n')
+
+
 print ('Colored vertexes:')
 for i in range(len(result)):
     print('color ' + str(i + 1) + ': ')
@@ -68,3 +75,5 @@ for i in range(len(result)):
 
 print('Compact view:')
 print (greedyColoring())
+
+print('\n')
