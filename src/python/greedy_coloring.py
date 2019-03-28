@@ -24,7 +24,7 @@ import time
 
 graph = [[]]
 #with open('/home/cuprumtan/prog/greedy/test.txt', 'r') as f:
-with open('/home/cuprumtan/''Рабочий стол''/git/GraphColoring/src/python/test.txt', 'r') as f:
+with open('/home/limonpudding/IdeaProjects/GraphColoring/test.txt', 'r') as f:
 
     for line in islice(f, 2):
         graph = [[int(num) for num in line.split(' ')] for line in f]
@@ -59,9 +59,6 @@ def greedyColoring():
                 temp_2 += 1
     return colored
 
-start_time = time.time()
-
-result = greedyColoring()
 
 print('\n')
 print('Source matrix:')
@@ -69,18 +66,28 @@ print(numpy.matrix(graph))
 print('\n')
 
 
+start_time = time.time_ns()
+
+result = greedyColoring()
+
+print("Exec time: %s nanoseconds" % (time.time_ns() - start_time))
+print('\n')
+
+
+#print ('Colored vertexes:')
+#for i in range(len(result)):
+#    print('color ' + str(i + 1) + ': ')
+#    for j in range(len(result[i])):
+#        print(str(result[i][j]))
+#    print()
+
 print ('Colored vertexes:')
 for i in range(len(result)):
     print('color ' + str(i + 1) + ': ')
-    for j in range(len(result[i])):
-        print(str(result[i][j]))
+    print(str(result[i]))
     print()
 
 print('Compact view:')
 print (greedyColoring())
-
-print('\n')
-
-print("Exec time: %s seconds" % (time.time() - start_time))
 
 print('\n')
