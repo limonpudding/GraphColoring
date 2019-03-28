@@ -5,6 +5,7 @@
 
 from itertools import islice
 import numpy
+import time
 
 # ab ac ad ba bc bd da db dc ea eb ec ed
 #graph = [[0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0],  # ab
@@ -58,6 +59,8 @@ def greedyColoring():
                 temp_2 += 1
     return colored
 
+start_time = time.time()
+
 result = greedyColoring()
 
 print('\n')
@@ -75,5 +78,9 @@ for i in range(len(result)):
 
 print('Compact view:')
 print (greedyColoring())
+
+print('\n')
+
+print("Exec time: %s seconds" % (time.time() - start_time))
 
 print('\n')
