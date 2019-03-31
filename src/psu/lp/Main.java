@@ -10,7 +10,7 @@ public class Main {
         int nodeCount;
         int[][] matrix;
 
-        File inputFile = new File("test.txt");
+        File inputFile = new File("matrix.txt");
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile)))) {
             String line = reader.readLine();
             nodeCount = Integer.parseInt(line);
@@ -36,6 +36,12 @@ public class Main {
 
         Map<Integer, ArrayList<Integer>> colours = new HashMap<>(); //Массив, который хранит группы вершин с одинаковыми цветами
 
+        calculateColoring(nodeCount, matrix, colours);
+        printResultPretty(colours);
+    }
+
+    private static void calculateColoring(int nodeCount, int[][] matrix, Map<Integer, ArrayList<Integer>> colours) {
+        Long startTime = System.nanoTime();
         for (int i = 0; i < nodeCount; i++) {
             if ((matrix[i][nodeCount] != 1)) { //если вершина окрашена, то ничего не делаем
                 ArrayList<Integer> colorI = new ArrayList<>(); //список вершин одного цвета
@@ -53,7 +59,8 @@ public class Main {
                 matrix[i][nodeCount] = 1;
             }
         }
-        printResultPretty(colours);
+        Long endTime = System.nanoTime();
+        System.out.println("Время выполнения алгоритма: " + (endTime - startTime) + " nanoseconds");
     }
 
     private static void printMatrix(int nodeCount, int[][] matrix) {
