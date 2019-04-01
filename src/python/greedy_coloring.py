@@ -24,7 +24,7 @@ import time
 
 graph = [[]]
 #with open('/home/cuprumtan/prog/greedy/test.txt', 'r') as f:
-with open('/home/cuprumtan/''Рабочий стол''/git/GraphColoring/test.txt', 'r') as f:
+with open('/home/adkuznetsova/git/GraphColoring/test.txt', 'r') as f:
 
     for line in islice(f, 2):
         graph = [[int(num) for num in line.split(' ')] for line in f]
