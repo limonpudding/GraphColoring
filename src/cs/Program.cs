@@ -1,11 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace АнализСложности
+namespace ConsoleApplication1
 {
     class Program
     {
@@ -58,10 +59,12 @@ namespace АнализСложности
             {
                 vertex[i] = 1;
             }
+            //start
+            long startTime = (long)(Stopwatch.GetTimestamp() / (Stopwatch.Frequency / 1000000000.0));
             notfound = Verify(mat, vertex);
-            int CurVer = n - 1;
+            int CurVer;
             int k;
-            for (k = 2; (k < n) && (notfound); k++)
+            for (k = 2; (k <=n) && (notfound); k++)
             {
                 bool notall = true;
                 CurVer = n - 1;
@@ -86,11 +89,20 @@ namespace АнализСложности
                 }
                 while (notall && notfound);
             }
+
+            long endTime = (long)(Stopwatch.GetTimestamp() / (Stopwatch.Frequency / 1000000000.0));
+            Console.WriteLine("Execution time: " + (endTime - startTime) + " nanoseconds");
+            //finish
             Console.WriteLine("Хроматическое число = " + (k-1));
             for (int j = 0; j < n; j++)
                 Console.Write(" " + vertex[j]);
             Console.WriteLine();
-            Console.ReadKey();
+            //Console.ReadKey();
         }
+        
+        public static long NanoTime  
+        {  
+            get { return (long)(Stopwatch.GetTimestamp() / (Stopwatch.Frequency / 1000000000.0)); }  
+        }  
     }
 }
